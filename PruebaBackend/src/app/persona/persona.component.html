@@ -1,0 +1,56 @@
+<p-panel header="Datos Personales">
+    <div>
+        <p-menubar [model]="items"></p-menubar>
+    </div>
+<p-table [value]="datosP">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Procesado</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-datos>
+        <tr>
+            <td>{{datos.nombre}}</td>
+            <td>{{datos.apellido}}</td>
+            <td>{{datos.procesado}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</p-panel>
+<p-dialog header="DatosPersonales" [responsive]="true" [style]="{width: '400px'}" [(visible)]="displaySave" 
+[modal]="true">
+    <div class="ui-g ui-fluid">
+        
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="nombre">Nombres</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="nombre" [(ngModel)]="datos.nombre" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="apellido">Apellidos</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="apellido" [(ngModel)]="datos.apellido" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="procesado">Procesado</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="procesado" [(ngModel)]="datos.procesado" />
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="pi pi-check" (click)="save()" label="Guardar"></button>
+        </div>
+    </p-footer>
+</p-dialog>
